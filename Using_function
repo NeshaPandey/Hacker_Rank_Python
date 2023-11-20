@@ -1,0 +1,37 @@
+def calculate_earnings(num_shoes, shoe_sizes, num_customers, customer_data):
+    # Create a dictionary to store the count of each shoe size
+    available_shoes = {}
+
+    # Initialize the dictionary based on the sizes of shoes in the shop
+    for size in shoe_sizes:
+        available_shoes[size] = available_shoes.get(size, 0) + 1
+
+    # Process each customer and calculate earnings
+    total_earnings = 0
+    for i in range(num_customers):
+        desired_size, amount_willing_to_pay = customer_data[i]
+
+        if desired_size in available_shoes and available_shoes[desired_size] > 0:
+            # Customer gets the desired size, and the shop earns the amount
+            total_earnings += amount_willing_to_pay
+            available_shoes[desired_size] -= 1
+
+    return total_earnings
+
+# Input: Number of shoes in the shop
+num_shoes = int(input())
+
+# Input: Sizes of each shoe in the shop
+shoe_sizes = list(map(int, input().split()))
+
+# Input: Number of customers
+num_customers = int(input())
+
+# Input: Desired size and amount willing to pay for each customer
+customer_data = []
+for _ in range(num_customers):
+    customer_data.append(tuple(map(int, input().split())))
+
+# Calculate and output total earnings
+total_earnings = calculate_earnings(num_shoes, shoe_sizes, num_customers, customer_data)
+print( total_earnings)
