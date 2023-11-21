@@ -1,21 +1,21 @@
-student_data = []
 if __name__ == '__main__':
-    for _ in range(int(input())):
+    # Number of students
+    n = int(input())
+
+    # Create a nested list to store student names and grades
+    student_list = []
+
+    for _ in range(n):
         name = input()
-        score = float(input())
-        student_data.append([name, score])  
+        grade = float(input())
+        student_list.append([name, grade])
 
-# Finding the second lowest grade
-grades = set(score for name, score in student_data)
-second_lowest_grade = grades[1] if len(grades) > 1 else grades[0]
+    # Find the second lowest grade
+    second_lowest_grade = sorted(set([student[1] for student in student_list]))[1]
 
-# Finding students with the second lowest grade
-students_with_second_lowest_grade = [name for name, grade in student_data if 
-score == second_lowest_grade]
+    # Find students with the second lowest grade
+    students_with_second_lowest_grade = [student[0] for student in student_list if student[1] == second_lowest_grade]
 
-# Sorting names alphabetically
-students_with_second_lowest_grade.sort()
-
-# Printing the result
-for student in students_with_second_lowest_grade:
-    print(student)
+    # Print the names in alphabetical order
+    for student in sorted(students_with_second_lowest_grade):
+        print(student)
