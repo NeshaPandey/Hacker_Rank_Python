@@ -1,0 +1,9 @@
+m = int(input())
+
+eng_roll = set(input().split())
+
+n = int(input())
+
+french_roll = set(input().split())
+
+print(len(eng_roll.union(french_roll)))
